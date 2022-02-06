@@ -5,19 +5,17 @@ package:
   version: {{ version }}
 
 source:
-  fn: django-uuidfield-{{ version }}.tar.gz
   url: https://github.com/dcramer/django-uuidfield/archive/{{ version }}.tar.gz
   sha256: 8461004b66871edc04435cba608519c5f587b66a830ee8646df83edae40a9c99
 
 build:
   number: 1
-  skip: True  # [py35]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install -vv .
 
 requirements:
   host:
     - python
-    - setuptools
+    - pip
   run:
     - python
     - django >=1.7,<1.8
